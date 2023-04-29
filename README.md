@@ -1,14 +1,14 @@
-# Version 1.0.0:
+# Version 1.0.1:
 ```
-1- Canvas_form for deno
-2- Fix some mistakes
+1- Fix some mistakes
+2- remove setCanvasSize
 ```
 
 # Install
 
 ```typescript
-import { Forms } from "https://deno.land/x/canvas_form@v1.0.0/mod.ts";
-const form = new Forms();
+import { Forms } from "https://deno.land/x/canvas_form@v1.0.1/mod.ts";
+const form = new Forms(width: number, height: number);
 ```
 # Values
 Key | Type 
@@ -104,11 +104,6 @@ text.draw({x:200, y:100, text:"Hello", fontFamily:"Halimun"});
 text.draw({x:500, y:100, text:"Hello", fontFamily:"Impact"});
 ```
 ![font family](https://cdn.discordapp.com/attachments/716228498825412690/1034159213125046394/unknown.png)
-# Canvas size
-```typecript
-// change size canvas 
-form.setCanvasSize(height, width) // default height = 1920, width = 1080
-```
 # Other method
 ```typecript
 // save Image
