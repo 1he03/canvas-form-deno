@@ -168,6 +168,7 @@ width | Number | 100
 text | String | null
 size | Number | 50
 fontFamily | String | Arial
+textAlign | String | left
 
 ## LineOptions
 Key | Type | Default
