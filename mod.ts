@@ -1,4 +1,4 @@
-import { createCanvas } from "https://deno.land/x/canvas@v1.4.1/mod.ts";
+import { createCanvas, EmulatedCanvas2D, CanvasRenderingContext2D } from "https://deno.land/x/canvas@v1.4.1/mod.ts";
 
 import { createCircle, CircleOptions, CircleReturn } from "./forms/circle.ts";
 import { createText, TextOptions, TextReturn } from "./forms/text.ts";
@@ -11,11 +11,12 @@ import { createImage, ImageOptions, ImageReturn } from "./forms/image.ts";
 
 export class Forms
 {
-    public canvas= createCanvas(1920,1080);
-    public ctx = this.canvas.getContext('2d');
+    public canvas: EmulatedCanvas2D;
+    public ctx: CanvasRenderingContext2D;
 
     constructor(width: number, height: number){
         this.canvas = createCanvas(width, height);
+        this.ctx = this.canvas.getContext('2d');
     }
 
     createCircle(options?: CircleOptions) : CircleReturn{
