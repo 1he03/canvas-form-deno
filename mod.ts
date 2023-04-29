@@ -14,11 +14,10 @@ export class Forms
     public canvas= createCanvas(1920,1080);
     public ctx = this.canvas.getContext('2d');
 
-    setCanvasSize(height: number, width: number)
-    {
-        if(height) this.canvas.height = height;
-        if(width) this.canvas.width = width;
+    constructor(width: number, height: number){
+        this.canvas = createCanvas(width, height);
     }
+
     createCircle(options?: CircleOptions) : CircleReturn{
         return createCircle(this.ctx, options as CircleOptions);
     }
