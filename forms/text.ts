@@ -7,7 +7,7 @@ export function createText(ctx: CanvasRenderingContext2D, options: TextOptions) 
     if(!options.y) options.y = 0;
     if(!options.fontFamily) options.fontFamily = "Arial";
     if(!options.text) options.text = "";
-    if(!options.textAlign) options.textAlign = "center";
+    if(!options.textAlign) options.textAlign = "left";
     if(!options.width) options.width = 0;
     if(!options.color) options.color = "black";
     if(!options.size || options.size != 0) options.size = 50;
