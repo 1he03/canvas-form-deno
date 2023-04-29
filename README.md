@@ -8,7 +8,7 @@
 
 ```typescript
 import { Forms } from "https://deno.land/x/canvas_form@v1.0.1/mod.ts";
-const form = new Forms(width: number, height: number);
+const form = new Forms(width: 1920, height: 1080);
 ```
 # Values
 Key | Type 
