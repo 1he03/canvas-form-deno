@@ -1,13 +1,12 @@
-# Version 1.0.1:
+# Version 1.0.2:
 ```
 1- Fix some mistakes
-2- remove setCanvasSize
 ```
 
 # Install
 
 ```typescript
-import { Forms } from "https://deno.land/x/canvas_form@v1.0.1/mod.ts";
+import { Forms } from "https://deno.land/x/canvas_form@v1.0.2/mod.ts";
 const form = new Forms(1920, 1080);
 ```
 # Values
