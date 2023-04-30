@@ -10,7 +10,7 @@ export function createText(ctx: CanvasRenderingContext2D, options: TextOptions) 
     if(!options.textAlign) options.textAlign = "left";
     if(!options.width) options.width = 0;
     if(!options.color) options.color = "black";
-    if(!options.size || options.size != 0) options.size = 50;
+    if(!options.size && options.size != 0) options.size = 50;
 
     return({x:options.x, y:options.y, size:options.size, text:options.text, width:options.width, color:options.color, fontFamily:options.fontFamily, textAlign:options.textAlign, 
         draw(_options: TextDrawOptions) : TextReturn
@@ -24,24 +24,32 @@ export function createText(ctx: CanvasRenderingContext2D, options: TextOptions) 
             textAlign = _options.textAlign || options.textAlign as "left" | "center" | "right", 
             text = _options.text || options.text as string,
             color = _options.color || options.color as string,
-            width = _options.width || options.width as number,
-            isWidth = width > 0 ? true : false;
+            width = _options.width || options.width as number;
+            //isWidth = width > 0 ? true : false;
             if(_options.drawType == 'fill') {
                 ctx.beginPath();
+                ctx.save();
                 ctx.font = `${size}px ${fontFamily}`;
                 ctx.textAlign =textAlign;
                 ctx.fillStyle = color;
-                if(isWidth) ctx.fillText(text,x,y,width);
-                else ctx.fillText(text,x,y);
+                const maxWidth = width / ( size * text.length / 1.667);
+                ctx.scale(maxWidth <= 0 ? 1 : maxWidth > 1 ? 1 : maxWidth, 1);
+                //if(isWidth) ctx.fillText(text,x,y,width);
+                ctx.fillText(text,x,y);
+                ctx.restore();
                 ctx.closePath();
             }
             else if(_options.drawType == 'stroke') {
                 ctx.beginPath();
+                ctx.save();
                 ctx.font = `${size}px ${fontFamily}`;
                 ctx.textAlign =textAlign;
                 ctx.strokeStyle = color;
-                if(isWidth) ctx.strokeText(text, x, y ,width);
-                else  ctx.strokeText(text, x, y);
+                const maxWidth = width / ( size * text.length / 1.667);
+                ctx.scale(maxWidth <= 0 ? 1 : maxWidth > 1 ? 1 : maxWidth, 1);
+                //if(isWidth) ctx.strokeText(text, x, y ,width);
+                ctx.strokeText(text, x, y);
+                ctx.restore();
                 ctx.closePath();
             }
             const draw =  this.draw;
@@ -68,4 +76,3 @@ export interface TextDrawOptions extends TextOptions{
 export interface TextReturn extends TextOptions{
     draw(options?: TextDrawOptions): this
 }
-
