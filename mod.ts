@@ -1,4 +1,5 @@
-import { createCanvas, EmulatedCanvas2D, CanvasRenderingContext2D } from "https://deno.land/x/canvas@v1.4.1/mod.ts";
+
+import { CanvasRenderingContext2D, createCanvas, Canvas, Fonts } from "https://deno.land/x/skia_canvas@0.5.2/mod.ts";
 
 import { createCircle, CircleOptions, CircleReturn } from "./forms/circle.ts";
 import { createText, TextOptions, TextReturn } from "./forms/text.ts";
@@ -11,7 +12,7 @@ import { createImage, ImageOptions, ImageReturn } from "./forms/image.ts";
 
 export class Forms
 {
-    public canvas: EmulatedCanvas2D;
+    public canvas: Canvas;
     public ctx: CanvasRenderingContext2D;
 
     constructor(width: number, height: number){
@@ -43,18 +44,18 @@ export class Forms
     createTriangle(options?: TriangleOptions) : TriangleReturn{
         return createTriangle(this.ctx, options as TriangleOptions);
     }
-    toSave(path: string, mimeType?: "image/jpeg" | "image/png")
+    toSave(path: string, mimeType?: "jpeg" | "png" | "webp")
     {
-        Deno.writeFile(`${path}.${mimeType? mimeType.split("/")[1] : "png"}`, this.toBuffer(mimeType || "image/png"));
+        Deno.writeFile(`${path}.${mimeType? mimeType.split("/")[1] : "png"}`, this.toBuffer());
     }
-    toBuffer(mimeType?: "image/jpeg" | "image/png") : Uint8Array
+    toBuffer(/*mimeType?: "image/jpeg" | "image/png"*/) : Uint8Array
     {
-        return this.canvas.toBuffer(mimeType);
+        return this.canvas.encode() //this.canvas..toBuffer(mimeType);
     }
-    addFontFamily(path: string, setName: string, options?: {style?: string, weight?: string})
+    addFontFamily(path: string, setName: string)
     {
-        if(!options) options = {};
-        this.canvas.registerFont(path, {family:setName, style: options.style, weight: options.weight});
+        const fonts = Fonts;
+        fonts.register(Deno.readFileSync(path), setName);
     }
 }
 
