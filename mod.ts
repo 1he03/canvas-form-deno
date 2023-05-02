@@ -46,11 +46,11 @@ export class Forms
     }
     toSave(path: string, mimeType?: "jpeg" | "png" | "webp")
     {
-        Deno.writeFile(`${path}.${mimeType? mimeType.split("/")[1] : "png"}`, this.toBuffer());
+        Deno.writeFile(`${path}.${mimeType? mimeType : "png"}`, this.toBuffer(mimeType));
     }
-    toBuffer(/*mimeType?: "image/jpeg" | "image/png"*/) : Uint8Array
+    toBuffer(mimeType?: "jpeg" | "png" | "webp", quality?: number) : Uint8Array
     {
-        return this.canvas.encode() //this.canvas..toBuffer(mimeType);
+        return this.canvas.encode(mimeType? mimeType : "png", quality)
     }
     addFontFamily(path: string, setName: string)
     {
