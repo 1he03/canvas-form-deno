@@ -67,3 +67,4 @@ export * from "./forms/rhombus.ts";
 export * from "./forms/star.ts";
 export * from "./forms/triangle.ts";
 export * from "./forms/image.ts";
+export {Fonts};
