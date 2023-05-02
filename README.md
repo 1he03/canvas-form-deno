@@ -1,4 +1,4 @@
-# Version 1.0.4:
+# Version 1.0.5:
 ```
 1- Fix some mistakes
 ```
@@ -6,7 +6,7 @@
 # Install
 
 ```typescript
-import { Forms } from "https://deno.land/x/canvas_form@v1.0.4/mod.ts";
+import { Forms } from "https://deno.land/x/canvas_form@v1.0.5/mod.ts";
 const form = new Forms(1920, 1080);
 ```
 # Values
