@@ -1,4 +1,4 @@
-# Version 1.0.3:
+# Version 1.0.4:
 ```
 1- Fix some mistakes
 ```
@@ -6,7 +6,7 @@
 # Install
 
 ```typescript
-import { Forms } from "https://deno.land/x/canvas_form@v1.0.3/mod.ts";
+import { Forms } from "https://deno.land/x/canvas_form@v1.0.4/mod.ts";
 const form = new Forms(1920, 1080);
 ```
 # Values
@@ -93,7 +93,7 @@ triangle.draw({x:300, y:200, color:"pink", sideBC: 50, rotate:20});
 `Warning` If you use windows os you must add font family in your windows before use `addFontFamily`
 ```typecript
 // Add new Font Family 
-form.addFontFamily(/* path: string, setName: string, options?: {style?: string, weight?: string} */) // You can add any name in setName
+form.addFontFamily(/* path: string, setName: string) // You can add any name in setName
 ```
 for examlpe:
 ```typecript
@@ -106,10 +106,10 @@ text.draw({x:500, y:100, text:"Hello", fontFamily:"Impact"});
 # Other method
 ```typecript
 // save Image
-form.toSave(path, mimeType?); // path = "save local device without .", mimeType?: "image/jpeg" | "image/png"
+form.toSave(/*path: string, mimeType?: "jpeg" | "png" | "webp"*/); // path = "save local device without ."
 
 // convert to Buffer
-form.toBuffer(mimeType?) // return Uint8Array, mimeType?: "image/jpeg" | "image/png"
+form.toBuffer(/*mimeType?: "jpeg" | "png" | "webp", , quality?: number*/)
 ```
 # One example in detail
 ```typecript
