@@ -109,7 +109,7 @@ text.draw({x:500, y:100, text:"Hello", fontFamily:"Impact"});
 form.toSave(/*path: string, mimeType?: "jpeg" | "png" | "webp"*/); // path = "save local device without ."
 
 // convert to Buffer
-form.toBuffer(/*mimeType?: "jpeg" | "png" | "webp", , quality?: number*/)
+form.toBuffer(/*mimeType?: "jpeg" | "png" | "webp", quality?: number*/)
 ```
 # One example in detail
 ```typecript
